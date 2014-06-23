@@ -45,6 +45,6 @@ bool* add(bool* output, bool input1[8], bool input2[8])
 
 bool* sub(bool* output, bool input1[8], bool input2[8])
 {
-	return add(output, input1, negate(output,input2));
+	return add(output, input1, negate_byte(output,input2));
 }
 

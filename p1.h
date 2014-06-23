@@ -19,6 +19,8 @@ bool Sum(bool a, bool b);
 
 bool Sum(bool a, bool b, bool c);
 
+bool CarryOut(bool a, bool b);
+
 bool CarryOut(bool a, bool b, bool c);
 
 bool Equal(bool a, bool b);

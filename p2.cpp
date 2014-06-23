@@ -1,6 +1,7 @@
 #include "basic_functions.h"
 #include "p1.h"
 #include "p2.h"
+#include "test_utils.h"
 
 bool zero[8] = {0,0,0,0,0,0,0,0};
 bool one[8] = {1,0,0,0,0,0,0,0};
@@ -20,8 +21,8 @@ bool* mux(bool* output, bool operation, bool input1[8], bool input2[8])
 
 bool* addu(bool* output, bool input1[8], bool input2[8])
 {
-	output[0] = Sum(input1[0], input2[0], false);
-	bool Carry = CarryOut(input1[0], input2[0], false);
+	output[0] = Sum(input1[0], input2[0]);
+	bool Carry = CarryOut(input1[0], input2[0]);
 
 	output[1] = Sum(input1[1], input2[1], Carry);
 	Carry = CarryOut(input1[1], input2[1], Carry);
@@ -49,26 +50,43 @@ bool* addu(bool* output, bool input1[8], bool input2[8])
 	return output;
 }
 
-bool* negate(bool* output, bool input[8])
+bool* negate_byte(bool* output, bool input[8])
 {
-		output[0] = Not(input[0]);
-		output[1] = Not(input[1]);
-		output[2] = Not(input[2]);
-		output[3] = Not(input[3]);
-		output[4] = Not(input[4]);
-		output[5] = Not(input[5]);
-		output[6] = Not(input[6]);
-		output[7] = Not(input[7]);
-
-		bool one[8] = {1,0,0,0,0,0,0,0};
 		bool temp[8];
 
-		return addu(temp, output, one);
+		temp[0] = Not(input[0]);
+		temp[1] = Not(input[1]);
+		temp[2] = Not(input[2]);
+		temp[3] = Not(input[3]);
+		temp[4] = Not(input[4]);
+		temp[5] = Not(input[5]);
+		temp[6] = Not(input[6]);
+		temp[7] = Not(input[7]);
+				
+		addu(output, temp, one);
+		
+		return output;
 }
 
 bool* subu(bool* output, bool input1[8], bool input2[8])
 {
-	return addu(output, input1, negate(output,input2));
+	bool temp[8];
+	bool* sub = negate_byte(sub,input1);
+	
+	// throw away overflow
+	
+	temp[0] = sub[0];
+	temp[1] = sub[1];
+	temp[2] = sub[2];
+	temp[3] = sub[3];
+	temp[4] = sub[4];
+	temp[5] = sub[5];
+	temp[6] = sub[6];
+	temp[7] = sub[7];
+	
+	
+	
+	return addu(output, input2, sub);
 }
 
 bool equal(bool input1[8], bool input2[8])

@@ -15,7 +15,7 @@
 
 bool* mux(bool* output, bool operation, bool input1[8], bool input2[8]);
 bool* addu(bool* output, bool input1[8], bool input2[8]);
-bool* negate(bool* output, bool input[8]);
+bool* negate_byte(bool* output, bool input[8]);
 bool* subu(bool* output, bool input1[8], bool input2[8]);
 
 bool equal(bool input1[8], bool input2[8]);

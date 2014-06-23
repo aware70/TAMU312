@@ -14,7 +14,7 @@ bool* alu(bool op_code[8], bool* output, bool input1[8], bool input2[8])
 			return subu(output,input1,input2);
 			break;
 		case OP_NEG:
-			return negate(output,input1);
+			return negate_byte(output,input1);
 			break;
 		case OP_EQ:
 			return equal(output,input1,input2);

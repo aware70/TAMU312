@@ -153,12 +153,12 @@ test_case(p2, negate) {
 
   str_to_bits8(a, "00001011");
   str_to_bits8(c, "11110101");
-  negate(output, a);
+  negate_byte(output, a);
   assert_eq8(c, output);
 
   str_to_bits8(a, "11111001");
   str_to_bits8(c, "00000111");
-  negate(output, a);
+  negate_byte(output, a);
   assert_eq8(c, output);
 }
 
