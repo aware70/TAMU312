@@ -38,7 +38,7 @@ bool* add(bool* output, bool input1[8], bool input2[8])
 	output[7] = Sum(input1[7], input2[7], Carry);
 	Carry = CarryOut(input1[7], input2[7], Carry);
 
-	TestOverflow(Carry);
+	//TestOverflow(Carry);
 
 	return output;
 }

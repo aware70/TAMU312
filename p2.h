@@ -29,7 +29,9 @@ bool* and8(bool* output, bool input1[8], bool input2[8]);
 bool* or8(bool* output, bool input1[8], bool input2[8]);
 
 bool* shiftLeft(bool* output, bool input[8]);
+bool* shiftLeft(bool* output, bool input[8], bool shift[8]);
 bool* shiftRight(bool* output, bool input[8]);
+bool* shiftRight(bool* output, bool input[8], bool shift[8]);
 
 extern bool zero[8];
 extern bool one[8];
