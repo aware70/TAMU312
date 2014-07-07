@@ -12,13 +12,25 @@
 #include <fstream>
 #include <string>
 
+struct instruction
+{
+	std::string INSTR;
+	std::string DEST;
+	std::string REG1;
+	std::string REG2;
+	
+	std::string EXE_STAGE;
+};
+
 // Registry, memory, and counters.
 // You should define these global data structures in your p6.cpp.
 extern bool registry[16][8];
+extern int lockReg[16];
 extern bool instructionMemory[256][8];
 extern bool dataMemory[16][8];
 extern bool PC[8];
 extern bool IR[32];
+
 
 // You should initialize the registry, PC, and other necessary data stores to
 // zero when the program starts, by calling this function. The test program will
@@ -38,7 +50,9 @@ void incrementPC();
 void addPC(bool addressOffset[8]);
 
 // Fetch 32 bits from instructionMemory[PC] to IR.
-void instructionFetch();
+int instructionFetch(); // modified to return PC
+
+bool IsIFormatInstruction(bool op_code[8]);
 
 // Parse a 32-bit instruction in IR to 4 or 3 parts.
 //
@@ -54,7 +68,7 @@ void instructionFetch();
 // - reg_in1: 8bit for the register from which the 1st operand will be loaded.
 // - reg_in2: 8bit for the register from which the 2nd operand will be loaded.
 // - imm16:   16bit for the immediate number from the instruction.
-void parseInstructionInIR(bool* name,
+bool parseInstructionInIR(bool* name,
                           bool* reg_out,
                           bool* reg_in1,
                           bool* reg_in2,

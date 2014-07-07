@@ -33,8 +33,8 @@ bool* shiftLeft(bool* output, bool input[8], bool shift[8]);
 bool* shiftRight(bool* output, bool input[8]);
 bool* shiftRight(bool* output, bool input[8], bool shift[8]);
 
-extern bool zero[8];
-extern bool one[8];
+extern bool zero[16];
+extern bool one[16];
 
 #endif // P2_H
 
